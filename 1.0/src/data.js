@@ -8,6 +8,7 @@ const data = {
             brand: 'female',
             rating: 4.5,
             numReviews: '10',
+            countInStock: '40',
             description: 'high quality',
         },
         {
@@ -18,6 +19,7 @@ const data = {
             price: '121',
             brand: 'ant',
             rating: 4.0,
+            countInStock: '0',
             numReviews: '11',
             description: 'high quality',
         },
@@ -30,6 +32,7 @@ const data = {
             brand: 'fiction',
             rating: 5,
             numReviews: '12',
+            countInStock: '5',
             description: 'high quality',
         },
         {
@@ -41,6 +44,7 @@ const data = {
             brand: 'female',
             rating: 3.5,
             numReviews: '15',
+            countInStock: '1',
             description: 'high quality',
         },
         {
@@ -52,6 +56,7 @@ const data = {
             brand: 'rose',
             rating: 3,
             numReviews: '20',
+            countInStock: '2',
             description: 'high quality',
         },
         {
@@ -61,6 +66,7 @@ const data = {
             image: '/images/pr6.jpg',
             price: '130',
             brand: 'wild',
+            countInStock: '4',
             rating: 5,
             numReviews: '15',
             description: 'high quality',

@@ -1,0 +1,21 @@
+{
+    "name": "version1.0",
+    "version": "1.0.0",
+    "description": "amazona-backend",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+
+    },
+    "repository": {
+        "type": "module",
+        "url": "git+https://github.com/Machakala/amazonav1.0-react.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Machakala/amazonav1.0-react/issues"
+    },
+    "homepage": "https://github.com/Machakala/amazonav1.0-react#readme"
+}

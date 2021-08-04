@@ -1,9 +1,12 @@
 import React from 'react';
-import Product from './components/Product';
-import data from './data';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Homescreen from './screens/Homescreen';
+import ProductScreen from './screens/ProductScreen';
 
 export default function App() {
     return ( <
+        BrowserRouter >
+        <
         div className = 'grid-container' >
         <
         header className = 'row' >
@@ -20,20 +23,22 @@ export default function App() {
         /div> <
         /header> <
         main >
+
         <
-        div className = "row center" > {
-            data.products.map((product) =>
-                <
-                Product key = { product._id }
-                product = { product }
-                />
-            )
-        } <
-        /div> <
+        Route path = "/product/:id"
+        component = { ProductScreen }
+        exact / >
+        <
+        Route path = '/'
+        component = { Homescreen }
+        exact / >
+
+        <
         /main> <
         footer className = "row center" >
-        All Rights reserved 2021. <
+        All Rights reserved 2021. by hamzy <
         /footer> <
-        /div>
+        /div> <
+        /BrowserRouter>
     )
 }
