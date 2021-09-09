@@ -1,10 +1,34 @@
+import bcrypt from 'bcryptjs';
+
+
 const data = {
+    users: [{
+            name: 'Hamzat',
+            email: 'admin@example.com',
+            password: bcrypt.hashSync('1234', 8 /*the second parameter '8' is for salting while bcrypt is for hashing*/ ),
+            isAdmin: true,
+            isSeller: true,
+            seller: {
+                name: 'Puma',
+                logo: '/images/logo1.png',
+                description: 'best seller',
+                rating: 4.5,
+                numReviews: 120,
+            }
+        },
+        {
+            name: 'james',
+            email: 'user@example.com',
+            password: bcrypt.hashSync('1234', 8 /*the second parameter '8' is for salting while bcrypt is for hashing*/ ),
+            isAdmin: false,
+            isSeller: false
+        },
+    ],
     products: [{
-            _id: '1',
             name: 'single back tat',
             category: 'angel',
             image: '/images/pr1.jpg',
-            price: '120',
+            price: '0.01',
             brand: 'female',
             rating: 4.5,
             numReviews: '10',
@@ -12,7 +36,6 @@ const data = {
             description: 'high quality',
         },
         {
-            _id: '2',
             name: 'full tigh tat',
             category: 'animal',
             image: '/images/pr2.jpg',
@@ -24,7 +47,6 @@ const data = {
             description: 'high quality',
         },
         {
-            _id: '3',
             name: 'full back tat',
             category: 'art',
             image: '/images/pr3.jpg',
@@ -36,7 +58,6 @@ const data = {
             description: 'high quality',
         },
         {
-            _id: '4',
             name: 'double back tat',
             category: 'angel',
             image: '/images/pr4.jpg',
@@ -48,7 +69,6 @@ const data = {
             description: 'high quality',
         },
         {
-            _id: '5',
             name: 'half tigh tat',
             category: 'flower',
             image: '/images/pr5.jpg',
@@ -60,7 +80,6 @@ const data = {
             description: 'high quality',
         },
         {
-            _id: '6',
             name: 'leg tat',
             category: 'animal',
             image: '/images/pr6.jpg',
