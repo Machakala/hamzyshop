@@ -72,7 +72,7 @@ export default function App() {
         <Link to="/wallet">
           Wallet
         </Link> 
-        {userInfo && userInfo.isAdmin && (
+        {userInfo && userInfo.isSeller && (
         <div className="dropdown">
             <Link to="#admin">
               Create an Offer <i className="fa fa-caret-down"></i>
