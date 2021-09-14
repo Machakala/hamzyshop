@@ -53,23 +53,9 @@ export default function App() {
       <div className="grid-container">
         <header className="row">
           <div>
-            <button
-              type="button"
-              className="open-sidebar"
-              onClick={() => setSidebarIsOpen(true)}
-            >
-              <i className="fa fa-bars"></i>
-            </button>
             <Link className="brand" to="/">
               amazona
             </Link>
-          </div>
-          <div>
-            <Route
-              render={({ history }) => (
-                <SearchBox history={history}></SearchBox>
-              )}
-            ></Route>
           </div>
           <div>
             <Link to="/cart">
