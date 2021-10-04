@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
@@ -24,8 +24,6 @@ import SellerRoute from './components/SellerRoute';
 import SellerScreen from './screens/SellerScreen';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
-import LoadingBox from './components/LoadingBox';
-import MessageBox from './components/MessageBox';
 import MapScreen from './screens/MapScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
@@ -33,7 +31,6 @@ import ChatBox from './components/ChatBox';
 
 function App() {
   const cart = useSelector((state) => state.cart);
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -42,12 +39,7 @@ function App() {
     dispatch(signout());
   };
 
-  const productCategoryList = useSelector((state) => state.productCategoryList);
-  const {
-    loading: loadingCategories,
-    error: errorCategories,
-    categories,
-  } = productCategoryList;
+
   useEffect(() => {
     dispatch(listProductCategories());
   }, [dispatch]);
@@ -56,12 +48,10 @@ function App() {
       <div className="grid-container">
         <header className="row">
           <div>
-            
             <Link className="brand" to="/">
               amazona
             </Link>
           </div>
-          
           <div>
             <Link to="/cart">
               Cart
@@ -69,28 +59,6 @@ function App() {
                 <span className="badge">{cartItems.length}</span>
               )}
             </Link>
-            {userInfo ? (
-              <div className="dropdown">
-                <Link to="#">
-                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
-                </Link>
-                <ul className="dropdown-content">
-                  <li>
-                    <Link to="/profile">User Profile</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderhistory">Order History</Link>
-                  </li>
-                  <li>
-                    <Link to="#signout" onClick={signoutHandler}>
-                      Sign Out
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              <Link to="/signin">Sign In</Link>
-            )}
             {userInfo && userInfo.isSeller && (
               <div className="dropdown">
                 <Link to="#admin">
@@ -130,38 +98,31 @@ function App() {
                 </ul>
               </div>
             )}
+            {userInfo ? (
+              <div className="dropdown">
+                <Link to="#">
+                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/profile">User Profile</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderhistory">Order History</Link>
+                  </li>
+                  <li>
+                    <Link to="#signout" onClick={signoutHandler}>
+                      Sign Out
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/signin">Sign In</Link>
+            )}
           </div>
         </header>
-        <aside className={sidebarIsOpen ? 'open' : ''}>
-          <ul className="categories">
-            <li>
-              <strong>Categories</strong>
-              <button
-                onClick={() => setSidebarIsOpen(false)}
-                className="close-sidebar"
-                type="button"
-              >
-                <i className="fa fa-close"></i>
-              </button>
-            </li>
-            {loadingCategories ? (
-              <LoadingBox></LoadingBox>
-            ) : errorCategories ? (
-              <MessageBox variant="danger">{errorCategories}</MessageBox>
-            ) : (
-              categories.map((c) => (
-                <li key={c}>
-                  <Link
-                    to={`/search/category/${c}`}
-                    onClick={() => setSidebarIsOpen(false)}
-                  >
-                    {c}
-                  </Link>
-                </li>
-              ))
-            )}
-          </ul>
-        </aside>
+
         <main>
           <Route path="/seller/:id" component={SellerScreen}></Route>
           <Route path="/cart/:id?" component={CartScreen}></Route>
