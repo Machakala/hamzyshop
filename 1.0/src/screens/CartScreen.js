@@ -33,7 +33,7 @@ export default function CartScreen(props) {
         {error && <MessageBox variant="danger">{error}</MessageBox>}
         {cartItems.length === 0 ? (
           <MessageBox>
-            Cart is empty. <Link to="/homescreen">Go Shopping</Link>
+            Cart is empty. <Link to="/">Go Shopping</Link>
           </MessageBox>
         ) : (
           <ul>
@@ -76,7 +76,7 @@ export default function CartScreen(props) {
                     </button>
                   </div>
                 </div>
-                <div><button><Link to ='/Homescreen'>shop more.</Link></button></div>
+                <div><button><Link to='/Homescreen'>shop more.</Link></button></div>
               </li>
             ))}
           </ul>
