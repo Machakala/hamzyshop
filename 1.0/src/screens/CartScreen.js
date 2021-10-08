@@ -76,7 +76,7 @@ export default function CartScreen(props) {
                     </button>
                   </div>
                 </div>
-                <div><button><Link to='/Homescreen'>shop more.</Link></button></div>
+                <div><button><Link to='/'>shop more.</Link></button></div>
               </li>
             ))}
           </ul>
